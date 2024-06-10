@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 /*
 * Lets us assume if you want to Create Nested HTML object structure like below
 * <div id="parent">
