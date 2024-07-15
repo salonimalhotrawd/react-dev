@@ -1,4 +1,58 @@
-#heading{
-    color:red;
-    background-color: black;
+.header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.logo {
+    width: 200px;
+}
+
+.nav-items {
+    padding: 0px 20px;
+}
+
+.nav-items>ul {
+    display: flex;
+    font-weight: 600;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+.nav-items>ul>li {
+    margin: 10px;
+    padding: 10px;
+}
+
+.search{
+    padding: 10px;
+}
+
+.resturant-body{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.resturant-card {
+    width: 200px;
+    transition: all .3s;
+    box-shadow: 0 4px 8px #0003;
+    margin:10px;
+    border-radius: 10px;
+}
+
+.resturant-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.resturant-logo{
+    width: 100%;
+    border-radius: 8px;
+}
+
+.resturant-container {
+    padding: 10px;
+    line-height: 1;
+    word-wrap: break-word;
 }
