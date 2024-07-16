@@ -1,49 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const HeaderLayout = () => {
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQQ9W98Mg2_uVUCWTJY_WkT0adfjOEXCvHRQ&s" />
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-const ResturantCardLayout = (props) => {
-    const { resData } = props;
-    const { cloudinaryImageId, name, cuisines, costForTwo, sla, avgRating } = resData?.info;
-    const { slaString } = sla;
-    return (
-        <div className="resturant-card" style={{ backgroundColor: "#f0f0f0" }}>
-            <img className="resturant-logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt="img-name" />
-            <div className="resturant-container">
-                <h3>{name}</h3>
-                <h4>{cuisines.join(",")}</h4>
-                <h5>{costForTwo} ({slaString})</h5>
-                <h5>{avgRating} stars</h5>
-            </div>
-        </div>
-    )
-}
-
-const NoResturantDataFound = () => {
-    return (
-        <h1>No Resturant Data Found</h1>
-    )
-}
-
-
-const resturantData = [
+const resturantDataList = [
     {
         "info": {
             "id": "655301",
@@ -1490,33 +1445,4 @@ const resturantData = [
     }
 ];
 
-const resturantData2 = [];
-
-// Dont use indexes as key for unique property as its a bad practice.
-// Use array uniqueId as key property
-
-const BodyLayout = () => {
-    return (
-        <div className="body-container">
-            <div className="search">Search</div>
-            <div className="resturant-body">
-                {
-                    resturantData?.length > 0 ? resturantData.map((resturant) => <ResturantCardLayout key={resturant?.info?.id} resData={resturant} />) : <NoResturantDataFound />
-                }
-            </div>
-        </div>
-    )
-}
-
-const AppLayout = () => {
-    return (
-        <div className="app">
-            <HeaderLayout />
-            <BodyLayout />
-        </div>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
+export default resturantDataList;
