@@ -60,6 +60,7 @@
 
 .filter-section {
     padding: 12px 10px;
+    display: flex;
 }
 
 .filter-btn {
@@ -69,5 +70,76 @@
     border-radius: 20px;
     border: burlywood;
     padding: 5px 12px;
+    margin-left: 12px;
+    height: 35px;
     cursor: pointer;
+}
+
+.loader {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+    width: 200px;
+    height: 300px;
+    background-color: #f0f0f0;
+    transition: all .3s;
+    box-shadow: 0 4px 8px #0003;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.shimmer-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.lgn-btn {
+    width: 100px;
+    height: 35px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.search-scn {
+    display: flex;
+    margin: 0 0 20px 6px;
+    border: 1px solid #8d6464;
+    width: 20%;
+}
+
+.search-input {
+    line-height: 1.5;
+    padding: 6px 6px;
+    border: none;
+}
+
+.search-btn {
+    border: none;
+    width: 32%;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.res-count{
+    color: #dc143c;
+    margin-left: auto;
+    margin-right: 0;
+    font-size: 20px;
+    font-weight: 400;
+    border: 1px dotted #dc143c;
+    height: 25px;
+    padding: 4px 10px;
 }

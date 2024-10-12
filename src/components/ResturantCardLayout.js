@@ -2,7 +2,7 @@ import {CDN_URL} from '../utils/constants';
 
 const ResturantCardLayout = (props) => {
     const { resData } = props;
-    const { cloudinaryImageId, name, cuisines, costForTwo, sla, avgRating } = resData?.info;
+    const { cloudinaryImageId, name, cuisines, costForTwo, sla, avgRating } = resData;
     const { slaString } = sla;
     return (
         <div className="resturant-card" style={{ backgroundColor: "#f0f0f0" }}>
