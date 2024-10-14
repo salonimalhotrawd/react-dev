@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import resturantDataList from "../utils/mockData";
 import ResturantCardLayout from "./ResturantCardLayout";
 import NoResturantDataFoundLayout from "./NoResturantDataFoundLayout";
@@ -81,7 +82,9 @@ const BodyLayout = () => {
             Use array uniqueId as key property */}
             <div className="resturant-body">
                 {
-                    filteredListofResturants.map((resturant) => <ResturantCardLayout key={resturant?.card?.card?.info?.id} resData={resturant?.card?.card?.info} />)
+                    filteredListofResturants.map((resturant) =>
+                        <Link className="body" key={resturant?.card?.card?.info?.id} to={"res-menu/" + resturant?.card?.card?.info?.id}><ResturantCardLayout resData={resturant?.card?.card?.info} /></Link>
+                    )
                 }
             </div>
         </div>
