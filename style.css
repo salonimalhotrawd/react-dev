@@ -153,3 +153,12 @@ button:disabled {
     text-decoration: none;
     color: black;
 }
+
+.user-card{
+    padding: 12px 10px;
+    background: #deb887;
+    height: 12%;
+    width: 20%;
+    cursor: pointer;
+    margin: 10px;
+}
