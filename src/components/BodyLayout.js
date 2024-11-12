@@ -4,6 +4,7 @@ import resturantDataList from "../utils/mockData";
 import ResturantCardLayout from "./ResturantCardLayout";
 import NoResturantDataFoundLayout from "./NoResturantDataFoundLayout";
 import ShimmerCompLayout from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const BodyLayout = () => {
@@ -41,6 +42,12 @@ const BodyLayout = () => {
         setfilteredListofResturants(apiFetchSmallData);
         setIsAPICalled(false);
     };
+
+    const onlineStatus = useOnlineStatus();
+
+    if (onlineStatus === false) return (
+        <h4>Looks Like you have an unstable Internet Connection. Please check again !!</h4>
+    )
 
     //Shimmer UI When Data is Called
     return isAPICalled ? <ShimmerCompLayout /> : (listofResturants?.length === 0 ? <NoResturantDataFoundLayout /> : (

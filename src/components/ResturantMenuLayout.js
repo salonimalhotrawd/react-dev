@@ -1,26 +1,13 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MENU_API_URL } from "../utils/constants";
 import ShimmerCompLayout from "./Shimmer";
+import useResturantMenu from "../utils/useResturantMenu";
 
 const ResturantMenuLayout = () => {
 
-    const [resMenu, setResMenu] = useState(null);
-
     const {resId} = useParams();
 
-    useEffect(() => {
-        console.log('Resturant Menu Layout Called');
-        fetchResturantMenu();
-    }, []);
-
-    fetchResturantMenu = async () => {
-        const apiUrl = MENU_API_URL + resId;
-        const resData = await fetch(apiUrl);
-
-        const jsonResponse = await resData.json();
-        setResMenu(jsonResponse?.data);
-    };
+    const resMenu = useResturantMenu(resId);
 
     if (resMenu === null) return <ShimmerCompLayout />;
 

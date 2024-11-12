@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
+import Grocery from './Grocery';
 
 const HeaderLayout = () => {
     /**
@@ -28,6 +29,8 @@ const HeaderLayout = () => {
         console.log("UseEffect Called");
     }, []);
 
+    const onlineStatus = useOnlineStatus();
+
     return (
         <div className="header">
             <div className="logo-container">
@@ -35,6 +38,7 @@ const HeaderLayout = () => {
             </div>
             <div className="nav-items">
                 <ul>
+                    <li>Online Status: {onlineStatus ? "Active" : "Not-Active"}</li>
                     <li>
                         <Link to="/">Home</Link>
                     </li>
@@ -43,6 +47,9 @@ const HeaderLayout = () => {
                     </li>
                     <li>
                         <Link to="/contact-us">Contact Us</Link>
+                    </li>
+                    <li>
+                        <Link to="/grocery">Grocery</Link>
                     </li>
                     <li>
                         <Link to="/">Cart</Link>
