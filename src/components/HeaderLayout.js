@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import Grocery from './Grocery';
 
 const HeaderLayout = () => {
     /**
@@ -32,29 +31,29 @@ const HeaderLayout = () => {
     const onlineStatus = useOnlineStatus();
 
     return (
-        <div className="header">
+        <div className="flex justify-between bg-pink-100 shadow-lg mb-2">
             <div className="logo-container">
-                <img className="logo" src={LOGO_URL} />
+                <img className="w-56" src={LOGO_URL} />
             </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Online Status: {onlineStatus ? "Active" : "Not-Active"}</li>
-                    <li>
+            <div className="nav-items items-center">
+                <ul className="flex p-4 m-4">
+                    <li className="px-4">Online Status: {onlineStatus ? "Active" : "Not-Active"}</li>
+                    <li className="px-4">
                         <Link to="/">Home</Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to="/about-us">About Us</Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to="/contact-us">Contact Us</Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to="/grocery">Grocery</Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to="/">Cart</Link>
                     </li>
-                    <button className="lgn-btn" onClick={
+                    <button className="lgn-btn px-4" onClick={
                         () => {
                             headerBtnReact === "Login" ? setBtnName("Logout") : setBtnName("Login");
                         }

@@ -52,14 +52,14 @@ const BodyLayout = () => {
     //Shimmer UI When Data is Called
     return isAPICalled ? <ShimmerCompLayout /> : (listofResturants?.length === 0 ? <NoResturantDataFoundLayout /> : (
         <div className="body-container">
-            <div className="filter-section">
-                <div className="search-scn">
-                    <input className="search-input" type="text" placeholder="search Resturants" value={resSearchText} onChange={
+            <div className="filter-section flex">
+                <div className="search-scn m-4 p-4">
+                    <input className="search-input border-dashed border-black" type="text" placeholder="search Resturants" value={resSearchText} onChange={
                         (e) => {
                             setResSearchText(e.target.value);
                         }
                     } />
-                    <button className="search-btn" onClick={
+                    <button className="search-btn px-3 py-2 bg-green-100 m-2" onClick={
                         () => {
                             //Filter the resturant List based on the input data
                             const filteredSearchRes = listofResturants.filter(res => res?.card?.card?.info.name.toLowerCase().trim('').includes(resSearchText?.toLowerCase().trim('')));
