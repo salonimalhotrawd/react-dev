@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Grocery from './Grocery';
+import UserContext from "../utils/UserContext";
 
 const HeaderLayout = () => {
     /**
@@ -31,6 +32,8 @@ const HeaderLayout = () => {
 
     const onlineStatus = useOnlineStatus();
 
+    const {loggedInUser} = useContext(UserContext);
+
     return (
         <div className="header">
             <div className="logo-container">
@@ -54,11 +57,15 @@ const HeaderLayout = () => {
                     <li>
                         <Link to="/">Cart</Link>
                     </li>
-                    <button className="lgn-btn" onClick={
+                    <button className="lgn-btn btn btn-primary" onClick={
                         () => {
                             headerBtnReact === "Login" ? setBtnName("Logout") : setBtnName("Login");
                         }
                     }>{headerBtnReact}</button>
+                    {
+                        headerBtnReact === "Logout" && <li>{loggedInUser}</li>
+                    }
+                    
                 </ul>
             </div>
         </div>

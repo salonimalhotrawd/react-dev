@@ -2,6 +2,7 @@ import { Component } from "react";
 import UserClassCardLayout from "./UserClassCardLayout";
 import UserClassLayout from "./UserClassLayout";
 import UserLayout from './UserLayout';
+import UserContext from './../utils/UserContext';
 
 class AboutUsLayout extends Component {
   constructor() {
@@ -30,6 +31,16 @@ class AboutUsLayout extends Component {
         <UserClassLayout name={"Second UserClass Layout"} loc={"Amritsar"} /> */}
 
         <UserClassCardLayout name={"Saloni Malhotra"} loc={"Amritsar"}/>
+        
+        {/*
+          * We can user userContext data in two ways:one is with the useContext hook
+          * Second one is with Consumer (mostly used in class based components)
+        */}
+        <span>
+           <UserContext.Consumer>
+            {({loggedInUser}) => <p>{loggedInUser}</p>}
+            </UserContext.Consumer>
+        </span>
       </div>
     )
   }

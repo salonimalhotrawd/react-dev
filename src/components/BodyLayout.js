@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import resturantDataList from "../utils/mockData";
-import ResturantCardLayout from "./ResturantCardLayout";
+import ResturantCardLayout, {withPromotedLabel} from "./ResturantCardLayout";
 import NoResturantDataFoundLayout from "./NoResturantDataFoundLayout";
 import ShimmerCompLayout from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext";
 
 const BodyLayout = () => {
     // Normal JS variable
@@ -21,6 +21,9 @@ const BodyLayout = () => {
 
     console.log("Body Component renders");
 
+
+    const PromotedResturantCardLayout= withPromotedLabel(ResturantCardLayout);
+
     /**
      * Whenever the state local variables updates, react triggers a reconcillation cycle(re-rendering the components)
      */
@@ -32,12 +35,13 @@ const BodyLayout = () => {
 
     const fetchResturantsData = async () => {
         setIsAPICalled(true);
-        const resData = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.877874&lng=75.7800259&collection=83633&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null");
+        const resData = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.87585329354235&lng=75.78149568289518&collection=83633&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null");
 
         const jsonResponse = await resData.json();
 
         jsonResponse?.data?.cards?.splice(0, 3);
         const apiFetchSmallData = jsonResponse?.data?.cards;
+        console.warn(apiFetchSmallData, 'API Response');
         setListofResturants(apiFetchSmallData);
         setfilteredListofResturants(apiFetchSmallData);
         setIsAPICalled(false);
@@ -48,6 +52,10 @@ const BodyLayout = () => {
     if (onlineStatus === false) return (
         <h4>Looks Like you have an unstable Internet Connection. Please check again !!</h4>
     )
+
+    const {loggedInUser, setUserName} = useContext(UserContext);
+
+    console.warn(loggedInUser)
 
     //Shimmer UI When Data is Called
     return isAPICalled ? <ShimmerCompLayout /> : (listofResturants?.length === 0 ? <NoResturantDataFoundLayout /> : (
@@ -83,6 +91,11 @@ const BodyLayout = () => {
                         setIsDisabled(true);
                     }
                 }>Clear Filters</button>
+                <div className="input-scn">
+                    <input className="search-input" type="text" placeholder="UserInfo"
+                    value={loggedInUser} 
+                    onChange={(e) => setUserName(e.target.value)}/>
+                </div>
                 <div className="res-count">Total Resturant Count: {filteredListofResturants.length}</div>
             </div>
             {/* Dont use indexes as key for unique property as its a bad practice.
@@ -90,7 +103,15 @@ const BodyLayout = () => {
             <div className="resturant-body">
                 {
                     filteredListofResturants.map((resturant) =>
-                        <Link className="body" key={resturant?.card?.card?.info?.id} to={"res-menu/" + resturant?.card?.card?.info?.id}><ResturantCardLayout resData={resturant?.card?.card?.info} /></Link>
+                        <Link className="body" key={resturant?.card?.card?.info?.id} to={"res-menu/" + resturant?.card?.card?.info?.id}>
+                            {
+                                resturant?.card?.card?.info?.promoted ? (
+                                    <PromotedResturantCardLayout resData={resturant?.card?.card?.info} />
+                                ) : (
+                                    <ResturantCardLayout resData={resturant?.card?.card?.info} />
+                                )
+                            }
+                        </Link>
                     )
                 }
             </div>

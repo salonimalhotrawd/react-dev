@@ -106,6 +106,7 @@
     width: 100px;
     height: 35px;
     padding: 2px;
+    margin: 16px;
     cursor: pointer;
 }
 
@@ -140,7 +141,7 @@ button:disabled {
     font-size: 20px;
     font-weight: 400;
     border: 1px dotted #dc143c;
-    height: 25px;
+    height: 40px;
     padding: 4px 10px;
 }
 
@@ -161,4 +162,92 @@ button:disabled {
     width: 20%;
     cursor: pointer;
     margin: 10px;
+}
+
+.label-promoted{
+    position: absolute;
+    color: white;
+    background: black;
+    padding: 7px;
+    border-radius: 12px;
+    margin: 3px;
+    font-family: cursive;
+}
+
+.res-menu{
+    text-align:center;
+}
+
+.res-cat{
+    margin:17px 100px;
+}
+
+.res-title{
+    width: 100%;
+    text-align: justify;
+    cursor: pointer;
+}
+
+.cat-arrow{
+    float: right;
+}
+
+.list-group-item {
+    padding: .375rem .75rem;
+    border-left:0px !important;
+    border-right:0px !important;
+    border-top:0px !important;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.info-title{
+    float:left;
+}
+
+.info-price{
+    float: right;
+}
+
+.info-desc{
+    font-size: 10px;
+    font-family: monospace;
+    padding: 10px;
+}
+
+.info-logo{
+    width: 100px;
+}
+
+.list-second-section{
+    display:inline-flex;
+    margin-top: 20px;
+    width: 100%;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.res-data {
+    display: block;
+    margin: 10px 0px;
+}
+
+.res-name{
+    font-weight: bold;
+}
+
+.res-ratings{
+    font-weight: bold;
+}
+
+.list-img{
+    margin-left: auto;
+}
+
+.input-scn{
+    display: flex;
+    margin: 0 0 20px 6px;
+    border: 1px solid #8d6464;
 }
